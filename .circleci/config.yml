@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  plan:
+    docker:
+      - image: marcelocorreia/terraform
+    steps:
+      - checkout
+      - run:
+          command: terraform plan
+
+  apply:
+    docker:
+      - image: marcelocorreia/terraform
+    steps:
+      - checkout
+      - run:
+          command: terraform apply
+
+
+workflows:
+  version: 2
+  plan_and_apply:
+    jobs:
+      - plan
+      - apply:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+
