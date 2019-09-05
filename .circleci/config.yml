@@ -6,7 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
-          command: terraform plan
+          command: |
+            terraform init
+            terraform plan
 
   apply:
     docker:
@@ -14,7 +16,9 @@ jobs:
     steps:
       - checkout
       - run:
-          command: terraform apply
+          command: |
+            terraform init
+            terraform apply
 
 
 workflows:
