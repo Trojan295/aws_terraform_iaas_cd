@@ -1,0 +1,17 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: staging
+  displayName: Staging
+  jobs:
+  - job: Plan
+    steps:
+    - bash: |
+        terraform init
+        terraform plan
+  - job: Apply
+    steps:
+    - bash: |
+        terraform init
+        terraform apply
