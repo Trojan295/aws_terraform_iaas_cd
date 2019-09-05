@@ -24,7 +24,7 @@ workflows:
       - plan
       - apply:
           requires:
-            - build
+            - plan
           filters:
             branches:
               only: master
