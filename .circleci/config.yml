@@ -18,7 +18,7 @@ jobs:
       - run:
           command: |
             terraform init
-            terraform apply
+            terraform apply -auto-approve
 
 
 workflows:
